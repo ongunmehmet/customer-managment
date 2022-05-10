@@ -5,19 +5,23 @@ import Card from "./components/card";
 import CardBody from "./components/card-body";
 import Container from "./components/container";
 import Input from "./components/Input";
-import Checkbox from "./components/Checkbox";
+import DropDownList from "./components/DropDownList";
 import Button from "./components/Button";
 import {useState} from "react";
 import Employee from "./model/Customer";
+import Dropdown from "bootstrap/js/src/dropdown";
 
 
 function Hr() {
     const SECTORS=["SOFtWARE","ARM"]
     let[customer,setCustomer]=useState(new Employee());
-    let[customers,setCustomers]=useState(new Array());
+    let[customers,setCustomers]=useState([]);
 
-    function handleInputchange(event){
-
+    function handleInputChange(event){
+        let  newCustomer={...customer};
+        const {name,value}=event.target;
+        newCustomer[name]=value;
+        setCustomer(newCustomer);
     }
     function customerSave(event) {
 
@@ -37,49 +41,49 @@ function Hr() {
                 <CardBody>
                     <Input id="companyName"
                            handleChange={handleInputChange}
-                           value={}
+                           value={customer.companyName}
                            label="Company Name">
                     </Input>
                     <Input id="phone"
                            handleChange={handleInputChange}
-                           value={}
+                           value={customer.phone}
                            label="Phone">
                     </Input>
                     <Input id="e-mail"
                            handleChange={handleInputChange}
-                           value={}
+                           value={customer.email}
                            label="E-Mail">
                     </Input>
                     <Input id="sector"
                            handleChange={handleInputChange}
-                           value={}
+                           value={customer.sector}
                            label="Sektör">
                     </Input>
-                    <Checkbox id="city"
+                    <DropDownList id="city"
                               handleChange={handleInputChange}
-                              value={}
+                              value={customer.city}
                               label="İl Seçiniz">
-                    </Checkbox>
-                    <Checkbox id="district"
+                    </DropDownList>
+                    <DropDownList id="district"
                               handleChange={handleInputChange}
-                              value={}
+                              value={customer.district}
                               label="İlçe Seçiniz">
-                    </Checkbox>
+                    </DropDownList>
 
-                    <Checkbox id="taxAdmistrationCity"
+                    <DropDownList id="taxAdmistrationCity"
                               handleChange={handleInputChange}
-                              value={}
+                              value={customer.taxAdmistrationCity}
                               label="Vergi Dairesi İli">
-                    </Checkbox>
+                    </DropDownList>
 
                     <Input id="taxNo"
                            handleChange={handleInputChange}
-                           value={}
+                           value={customer.taxAdmistrationName}
                            label="Vergi  Numarası">
                     </Input>
                     <Input id="registrationNo"
                            handleChange={handleInputChange}
-                           value={}
+                           value={customer.registrationNo}
                            label="Sicil Numarası">
                     </Input>
                     <div className="input-group"></div>
