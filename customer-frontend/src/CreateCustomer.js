@@ -25,6 +25,7 @@ function CreateCustomer() {
     }
     function customerSave(event) {
 
+
     }
 
     function customerSaveCancel(event) {
@@ -35,7 +36,7 @@ function CreateCustomer() {
 
         <Container>
 
-            <Card>
+            <Card style={{width:450}}>
 
                 <CardHeader title="Yeni Müşteri "> </CardHeader>
                 <CardBody>

@@ -5,11 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.css";
 import CreateCustomer from "./CreateCustomer";
+import Customers from "./Customers";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CreateCustomer />
+    <Customers />
   </React.StrictMode>
 );
 
