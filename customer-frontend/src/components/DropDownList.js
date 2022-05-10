@@ -1,19 +1,21 @@
 export default function Checkbox(props){
    return (
-       <div className="input-group">
+       <div className="input-group" style={{marginTop:2,marginBottom:2}}>
 
-               <div className="btn-group">
-                   <button className="btn btn-secondary btn-sm" type="button">
-                       Small split button
-                   </button>
-
-                   <button type="button" className="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       <span className="sr-only">Toggle Dropdown</span>
-                   </button>
-                   <div className="dropdown-menu"></div>
+           <div className="dropdown">
+               <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   {props.label}
+               </button>
+               <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                   <a className="dropdown-item" href="#">Action</a>
+                   <a className="dropdown-item" href="#">Another action</a>
+                   <a className="dropdown-item" href="#">Something else here</a>
+               </div>
 
            </div>
-       </div>
+
+           </div>
+
    );
 }

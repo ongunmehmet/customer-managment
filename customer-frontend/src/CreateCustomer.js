@@ -12,7 +12,7 @@ import Employee from "./model/Customer";
 import Dropdown from "bootstrap/js/src/dropdown";
 
 
-function Hr() {
+function CreateCustomer() {
     const SECTORS=["SOFtWARE","ARM"]
     let[customer,setCustomer]=useState(new Employee());
     let[customers,setCustomers]=useState([]);
@@ -37,7 +37,7 @@ function Hr() {
 
             <Card>
 
-                <CardHeader title="customer"> </CardHeader>
+                <CardHeader title="Yeni Müşteri "> </CardHeader>
                 <CardBody>
                     <Input id="companyName"
                            handleChange={handleInputChange}
@@ -49,7 +49,7 @@ function Hr() {
                            value={customer.phone}
                            label="Phone">
                     </Input>
-                    <Input id="e-mail"
+                    <Input id="email"
                            handleChange={handleInputChange}
                            value={customer.email}
                            label="E-Mail">
@@ -78,8 +78,8 @@ function Hr() {
 
                     <Input id="taxNo"
                            handleChange={handleInputChange}
-                           value={customer.taxAdmistrationName}
-                           label="Vergi  Numarası">
+                           value={customer.taxNo}
+                           label="Vergi Numarası">
                     </Input>
                     <Input id="registrationNo"
                            handleChange={handleInputChange}
@@ -106,5 +106,5 @@ function Hr() {
     );
 }
 
-export default Hr;
+export default CreateCustomer;
 
