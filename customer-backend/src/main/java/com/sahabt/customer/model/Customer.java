@@ -29,7 +29,7 @@ public class Customer {
     private String customerId;
     private String  companyName;
     private String  phone;
-    private String  gmail;
+    private String  email;
     private String  sector;
     private String  city;
     private String  district;
@@ -39,9 +39,6 @@ public class Customer {
     private String  taxNo;
     @Column(unique = true)
     private String  registrationNo;
-
-
-
 
 
 }

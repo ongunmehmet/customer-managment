@@ -16,7 +16,7 @@ public class GetInformantationCustomerResponse {
     private String  taxAdmistrationName;
     private String  sector;
     private String  phone;
-    private String  gmail;
+    private String  email;
     private String  gmail2;
 
 }

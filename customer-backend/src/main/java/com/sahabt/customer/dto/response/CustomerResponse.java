@@ -1,4 +1,4 @@
-package com.sahabt.customer.dto.request;
+package com.sahabt.customer.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerAddRequest {
-
+public class CustomerResponse {
     private String  companyName;
     private String  phone;
     private String  email;
