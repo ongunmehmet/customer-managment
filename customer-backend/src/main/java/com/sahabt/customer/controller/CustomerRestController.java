@@ -2,6 +2,7 @@ package com.sahabt.customer.controller;
 
 import com.sahabt.customer.dto.request.CustomerAddRequest;
 import com.sahabt.customer.dto.request.CustomerUpdateRequest;
+import com.sahabt.customer.dto.request.GetInformantationCustomerRequest;
 import com.sahabt.customer.dto.response.CustomerAddResponse;
 import com.sahabt.customer.dto.response.CustomerResponse;
 import com.sahabt.customer.model.Customer;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequestScope
 @RestController
 @RequestMapping("/customers")
+
 public class CustomerRestController {
     private final CustomerService customerService;
     private final CustomerRepository customerRepository;
@@ -43,5 +45,10 @@ public class CustomerRestController {
         return customerRepository.findCustomersByCompanyNameOrTaxNoOrCustomerIdOrSector(companyName, taxNo, customerId, sector);
     }
 
+    @GetMapping
+    public List<Customer> findCustomer(@RequestBody GetInformantationCustomerRequest getInformantationCustomerRequest){
+
+        return customerRepository.findCustomersByCompanyNameOrTaxNoOrCustomerIdOrSector2(getInformantationCustomerRequest);
+    }
 
 }
