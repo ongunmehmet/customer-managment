@@ -39,6 +39,7 @@ public class CustomerRestController {
     @GetMapping
     public List<Customer> findCustomer(@RequestParam(required = false) String companyName,@RequestParam(required = false) String taxNo,
                                        @RequestParam(required = false) String customerId,@RequestParam(required = false) String sector){
+
         return customerRepository.findCustomersByCompanyNameOrTaxNoOrCustomerIdOrSector(companyName, taxNo, customerId, sector);
     }
 

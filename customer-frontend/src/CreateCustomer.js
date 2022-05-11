@@ -34,9 +34,9 @@ function CreateCustomer() {
 
     return (
 
-        <Container>
+        <Container style={{width:450}}>
 
-            <Card style={{width:450}}>
+            <Card >
 
                 <CardHeader title="Yeni Müşteri "> </CardHeader>
                 <CardBody>

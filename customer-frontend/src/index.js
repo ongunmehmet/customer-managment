@@ -10,7 +10,7 @@ import Customers from "./Customers";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Customers />
+    <CreateCustomer />
   </React.StrictMode>
 );
 
