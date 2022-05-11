@@ -1,25 +1,76 @@
 import logo from './logo.svg';
 import './App.css';
+import Sehir from './il-ilce.json'
+import {useEffect, useState} from "react";
 
 function App() {
+
+  const [seciliIl,setSeciliIl]=useState(null);
+  const [ilceler,setIlceler]=useState([]);
+  const [seciliIlce,setSeciliIlce]=useState([]);
+  const [data,setData]=useState(Sehir.data);
+  const [index,setIndex]=useState([]);
+
+
+  useEffect(()=>{
+      data.map((item,index)=>{
+          if(item.il_adi===seciliIl){
+              console.log(item["ilceler"])
+              setIlceler(item["ilceler"])
+          }
+      })
+
+  },[seciliIl])
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="App-header ">
+        <>
+       <select value={seciliIl}  onChange={e => {
+           setSeciliIl(e.target.value)
+       }} >
+          {
+            data.map((il,index)=> {
+
+                    return(
+                        <option>{il.il_adi}</option>
+                        )
+            })
+          }
+        </select>
+           {
+                seciliIl !== null ?
+                    <select value={seciliIlce} onChange={e => setSeciliIlce(e.target.value)} >
+                        {
+                            ilceler.map((item,index)=> {
+
+                                return(
+                                    <option>{item.ilce_adi}</option>
+                                )
+                            })
+
+                        }
+                    </select> : <div></div>
+            }
+        </>
       </header>
     </div>
   );
+  const x = [
+    {"a":"1",
+    "b":"2",
+    "c":3}];
+
+
+  const test =() => {
+
+    return x.map(xx=>{
+      if(xx.b)
+      return xx.b
+    });
+  }
 }
 
 export default App;
