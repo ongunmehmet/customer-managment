@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
 import Sehir from './il-ilce.json'
 import {useEffect, useState} from "react";
 
@@ -25,10 +23,10 @@ function App() {
 
 
     return (
-        <div className="App">
-            <header className="App-header ">
+        <div className="card">
+            <header >
                 <>
-                    <select value={seciliIl}  onChange={e => {
+                    <select placeholder="İl Seçiniz" value={seciliIl}  onChange={e => {
                         setSeciliIl(e.target.value)
                     }} >
                         {
@@ -42,7 +40,7 @@ function App() {
                     </select>
                     {
                         seciliIl !== null ?
-                            <select value={seciliIlce} onChange={e => setSeciliIlce(e.target.value)} >
+                            <select placeholder='ilçe' value={seciliIlce} onChange={e => setSeciliIlce(e.target.value)} >
                                 {
                                     ilceler.map((item,index)=> {
 
