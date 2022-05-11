@@ -10,6 +10,7 @@ import Button from "./components/Button";
 import {useState} from "react";
 import Employee from "./model/Customer";
 import Dropdown from "bootstrap/js/src/dropdown";
+import DropdownLogic from "./DropdownLogic";
 
 
 function CreateCustomer() {
@@ -34,9 +35,9 @@ function CreateCustomer() {
 
     return (
 
-        <Container>
+        <Container style={{width:450}}>
 
-            <Card style={{width:450}}>
+            <Card >
 
                 <CardHeader title="Yeni Müşteri "> </CardHeader>
                 <CardBody>
@@ -70,7 +71,7 @@ function CreateCustomer() {
                               value={customer.district}
                               label="İlçe Seçiniz">
                     </DropDownList>
-
+                    <DropdownLogic/>
                     <DropDownList id="taxAdmistrationCity"
                               handleChange={handleInputChange}
                               value={customer.taxAdmistrationCity}

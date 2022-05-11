@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class GetInformantationCustomerRequest {
 
+
     private String  companyName;
     private String  sector;
     private String  taxAdmistrationName;

@@ -2,16 +2,15 @@ export default class Customer {
     constructor(customer
                     = {
 
-        companyName: "",
-        phone: "",
-        email: "",
-        sector: "",
-        city: "",
-        district: "",
-        taxAdmistrationCity: "",
-        taxAdmistrationName: "",
-        taxNo: "",
-        registrationNo: ""
+        companyName: "SAHBT",
+        phone: "0555",
+        email: "sahbt@",
+        sector: "bilişim",
+        city: "istanbul",
+        district: "KARTAL",
+        taxAdmistrationCity: "İSTANBUL",
+        taxAdmistrationName: "CVK",
+        taxNo: "AS789848A",
     }) {
         this.companyName = customer.companyName;
         this.phone = customer.phone;
@@ -22,6 +21,5 @@ export default class Customer {
         this.taxAdmistrationCity = customer.taxAdmistrationCity;
         this.taxAdmistrationName = customer.taxAdmistrationName;
         this.taxNo = customer.taxNo;
-        this.registrationNo = customer.registrationNo;
     }
 };
