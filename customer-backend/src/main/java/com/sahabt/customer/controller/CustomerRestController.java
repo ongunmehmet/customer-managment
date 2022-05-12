@@ -48,6 +48,7 @@ public class CustomerRestController {
 
     }
     @GetMapping
+
     public List<CustomerResponse> findAllCustomers(@RequestParam(defaultValue = "0", required = false) int pageNo, @RequestParam(defaultValue = "20",required = false) int pageSize){
         return customerService.findAll(pageNo, pageSize);
     }
