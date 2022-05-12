@@ -19,5 +19,4 @@ public class CustomerUpdateRequest {
     private String  taxAdmistrationCity;
     private String  taxAdmistrationName;
     private String  taxNo;
-    private String  registrationNo;
 }

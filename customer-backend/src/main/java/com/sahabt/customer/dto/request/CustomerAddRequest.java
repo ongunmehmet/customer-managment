@@ -20,5 +20,4 @@ public class CustomerAddRequest {
     private String  taxAdmistrationCity;
     private String  taxAdmistrationName;
     private String  taxNo;
-    private String  registrationNo;
 }
