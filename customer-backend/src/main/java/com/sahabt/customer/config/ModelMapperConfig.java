@@ -2,6 +2,7 @@ package com.sahabt.customer.config;
 
 import com.sahabt.customer.dto.request.CustomerAddRequest;
 import com.sahabt.customer.dto.request.CustomerUpdateRequest;
+import com.sahabt.customer.dto.response.CustomerResponse;
 import com.sahabt.customer.model.Customer;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
@@ -23,7 +24,6 @@ public class ModelMapperConfig {
                 customer.setTaxAdmistrationCity(request.getTaxAdmistrationCity());
                 customer.setTaxAdmistrationName(request.getTaxAdmistrationName());
                 customer.setTaxNo(request.getTaxNo());
-                customer.setRegistrationNo(request.getRegistrationNo());
                 return customer;
             };
     private static final Converter<CustomerUpdateRequest, Customer> CUSTOMER_UPDATE_REQUEST_TO_CUSTOMER_CONVERTER =
@@ -39,9 +39,9 @@ public class ModelMapperConfig {
                 customer.setTaxAdmistrationCity(request.getTaxAdmistrationCity());
                 customer.setTaxAdmistrationName(request.getTaxAdmistrationName());
                 customer.setTaxNo(request.getTaxNo());
-                customer.setRegistrationNo(request.getRegistrationNo());
                 return customer;
             };
+
     @Bean
     public ModelMapper mapper() {
         var mapper = new ModelMapper();

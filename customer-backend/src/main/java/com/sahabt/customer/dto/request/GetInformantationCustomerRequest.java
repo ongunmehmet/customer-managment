@@ -10,11 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetInformantationCustomerRequest {
-
-
     private String  companyName;
     private String  sector;
-    private String  taxAdmistrationName;
-    private String  registrationNo;
-
+    private String  taxNo;
 }

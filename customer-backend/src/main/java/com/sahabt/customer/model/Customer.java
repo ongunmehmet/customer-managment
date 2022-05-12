@@ -37,8 +37,5 @@ public class Customer {
     private String  taxAdmistrationName;
     @Column(unique = true)
     private String  taxNo;
-    @Column(unique = true)
-    private String  registrationNo;
-
 
 }
