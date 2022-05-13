@@ -10,6 +10,7 @@ import com.sahabt.customer.model.Customer;
 import com.sahabt.customer.repository.CustomerRepository;
 import com.sahabt.customer.service.CustomerService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class CustomerRestController {
         this.customerRepository = customerRepository;
     }
 
-    @PostMapping("/add")
+    @PostMapping(value = "/add" ,produces = MediaType.APPLICATION_JSON_VALUE ,consumes = MediaType.APPLICATION_JSON_VALUE)
     public Optional<CustomerAddResponse> createCustomer(@RequestBody @Valid CustomerAddRequest customerAddRequest) {
         return customerService.createCustomer(customerAddRequest);
     }
