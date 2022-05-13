@@ -2,6 +2,7 @@ package com.sahabt.customer.config;
 
 import com.sahabt.customer.dto.request.CustomerAddRequest;
 import com.sahabt.customer.dto.request.CustomerUpdateRequest;
+import com.sahabt.customer.dto.response.CustomerResponse;
 import com.sahabt.customer.model.Customer;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
@@ -40,6 +41,7 @@ public class ModelMapperConfig {
                 customer.setTaxNo(request.getTaxNo());
                 return customer;
             };
+
     @Bean
     public ModelMapper mapper() {
         var mapper = new ModelMapper();

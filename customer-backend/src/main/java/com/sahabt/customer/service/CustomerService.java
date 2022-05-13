@@ -2,16 +2,19 @@ package com.sahabt.customer.service;
 
 import com.sahabt.customer.dto.request.CustomerAddRequest;
 import com.sahabt.customer.dto.request.CustomerUpdateRequest;
+import com.sahabt.customer.dto.request.GetInformantationCustomerRequest;
 import com.sahabt.customer.dto.response.CustomerAddResponse;
 import com.sahabt.customer.dto.response.CustomerResponse;
-import com.sahabt.customer.dto.response.GetInformantationCustomerResponse;
 
-import javax.swing.plaf.OptionPaneUI;
+import java.util.List;
+import java.util.Optional;
 
 public interface CustomerService {
 
-    CustomerAddResponse createCustomer(CustomerAddRequest request);
-    CustomerResponse removeById(String id);
-    CustomerResponse updateCustomer(String id, CustomerUpdateRequest updateRequest);
+    Optional<CustomerAddResponse> createCustomer(CustomerAddRequest request);
+    Optional<CustomerResponse> removeById(String id);
+    Optional<CustomerResponse> updateCustomer(String id, CustomerUpdateRequest updateRequest);
+    List<CustomerResponse> findCustomers(GetInformantationCustomerRequest request);
 
+    List<CustomerResponse> findAll(int pageNo, int pageSize);
 }
