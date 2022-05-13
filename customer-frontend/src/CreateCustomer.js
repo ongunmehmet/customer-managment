@@ -4,35 +4,63 @@ import Card from "./components/card";
 import CardBody from "./components/card-body";
 import Container from "./components/container";
 import Input from "./components/Input";
-import DropDownList from "./components/DropDownList";
 import Button from "./components/Button";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Customer from "./model/Customer";
-import DropdownLogic from "./DropdownLogic";
 import CustomerService from "./service/CustomerService";
+import SelectBox from "./components/Selectbox";
+import City from './il-ilce.json'
 
 
 function CreateCustomer() {
-    const SECTORS=["SOFtWARE","ARM"]
-    const customerService= new CustomerService();
+    const SECTORS = ["SOFtWARE", "ARM"]
+    const customerService = new CustomerService();
 
-    let[customer,setCustomer]=useState(new Customer());
-    let[customers,setCustomers]=useState([]);
+    let [customer, setCustomer] = useState(new Customer());
+    let [customers, setCustomers] = useState([]);
+    let [districts, setDistricts] = useState([]);
+    let [dataCitiesAndDistricts, setDataCitiesAndDistricts] = useState(City.data);
 
-    function handleInputChange(event){
-        let  newCustomer={...customer};
-        const {name,value}=event.target;
-        newCustomer[name]=value;
+
+
+    useEffect(()=> {
+        dataCitiesAndDistricts.map((item, index) => {
+            if (item.il_adi === customer.city) {
+                //  console.log(item["ilceler"])
+                setDistricts(item["ilceler"])
+            }
+           if ((customer.city==="")){
+
+               if(item["il_adi"]==="Adana")
+
+                   setDistricts(item["ilceler"])
+               console.log(item["ilceler"])
+
+            }
+        })
+    })
+    function handleInputChange(event) {
+
+        customer.city="";
+        customer.district="";
+        let newCustomer = {...customer};
+        const {name, value} = event.target;
+        newCustomer[name] = value;
         setCustomer(newCustomer);
+
+
+        console.log("il"+customer.city);
+        console.log("ilçe:"+customer.district);
     }
+
     function customerSave(event) {
 
         customerService.addCustomer({...customer})
-            .then(res=>{
-               // if(res.status.toLowerCase()==='ok')
-               // {
-                 //   console.log("Kayıt başarılı")
-               // }
+            .then(res => {
+                // if(res.status.toLowerCase()==='ok')
+                // {
+                //   console.log("Kayıt başarılı")
+                // }
                 alert(res.companyName);
             });
 
@@ -45,9 +73,9 @@ function CreateCustomer() {
 
     return (
 
-        <Container style={{width:450}}>
+        <Container style={{width: 450}}>
 
-            <Card >
+            <Card>
 
                 <CardHeader title="Yeni Müşteri "> </CardHeader>
                 <CardBody>
@@ -71,23 +99,23 @@ function CreateCustomer() {
                            value={customer.sector}
                            label="Sektör">
                     </Input>
-                    <DropDownList id="city"
-                              handleChange={handleInputChange}
-                              value={customer.city}
-                              label="İl Seçiniz">
-                    </DropDownList>
-                    <DropDownList id="district"
-                              handleChange={handleInputChange}
-                              value={customer.district}
-                              label="İlçe Seçiniz">
-                    </DropDownList>
-                    <DropdownLogic/>
-                    <DropDownList id="taxAdmistrationCity"
-                              handleChange={handleInputChange}
-                              value={customer.taxAdmistrationCity}
-                              label="Vergi Dairesi İli">
-                    </DropDownList>
 
+                    <SelectBox
+                        id="city"
+                        options={dataCitiesAndDistricts}
+                        handleChange={handleInputChange}
+                        value={customer.city}
+                        label="İl"
+                        keyName="il_adi"
+                    />
+                    <SelectBox
+                        id="district"
+                        options={districts}
+                        handleChange={handleInputChange}
+                        value={customer.city}
+                        label="İlçe"
+                        keyName="ilce_adi"
+                    />
                     <Input id="taxNo"
                            handleChange={handleInputChange}
                            value={customer.taxNo}
