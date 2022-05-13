@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const API_URL = "http://localhost:2001/customer/api/v1/customers";
+const API_URL = "http://localhost:2001/customer/api/v1/customers/add2";
 //const [newCustomer , setNewCustomer]=useState([]);
 
 export default class CustomerService {

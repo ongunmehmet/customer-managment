@@ -7,12 +7,21 @@ import {useState} from "react";
 import Customer from "./model/Customer";
 import Button from "./components/Button";
 import Container from "./components/container";
+import CustomerService from "./service/CustomerService";
 
 function Customers() {
     const [customer, setCustomer] = useState(new Customer());
     const [customers, setCustomers] = useState([]);
+    const customerService=new CustomerService();
 
-    function customerList(customers) {
+
+
+
+
+     function customerList(customers) {
+        setCustomers( customerService.getAllCustomers());
+        //console.log(customers);
+
         return (
             <Card>
                 <CardHeader title="Müşteri Listesi"></CardHeader>
@@ -33,7 +42,7 @@ function Customers() {
                         {
                             customers.map(
                                 (cus,index)=>(
-                                    <tr key={cus.customerNo} >
+                                    <tr key={cus.costumerId} >
                                         <td><h6>{index+1}</h6></td>
                                         <td><h6>{cus.companyName}</h6></td>
                                         <td><h6>{cus.taxNo}</h6></td>

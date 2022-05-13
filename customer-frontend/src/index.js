@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.css";
 import CreateCustomer from "./CreateCustomer";
 import Customers from "./Customers";
-import DropdownLogic from "./DropdownLogic";
+import DropdownLogic from "./DropdownLogicCityDistrict";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
