@@ -8,7 +8,6 @@ import com.sahabt.customer.model.Customer;
 import com.sahabt.customer.repository.CustomerRepository;
 import com.sahabt.customer.service.CustomerService;
 import org.modelmapper.ModelMapper;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

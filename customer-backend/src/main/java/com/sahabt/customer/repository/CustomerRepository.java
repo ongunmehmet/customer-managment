@@ -11,6 +11,5 @@ import java.util.List;
 public interface CustomerRepository extends JpaRepository<Customer,String> {
     List<Customer> findCustomersByCompanyNameOrTaxNoOrCustomerIdOrSector(String companyName, String taxNo, String customerId, String sector);
 
-    List<Customer> findCustomersByCompanyNameOrTaxNoOrCustomerIdOrSector2(GetInformantationCustomerRequest getInformantationCustomerRequest);
 
 }

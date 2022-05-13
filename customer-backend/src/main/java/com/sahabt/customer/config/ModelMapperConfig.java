@@ -23,7 +23,6 @@ public class ModelMapperConfig {
                 customer.setTaxAdmistrationCity(request.getTaxAdmistrationCity());
                 customer.setTaxAdmistrationName(request.getTaxAdmistrationName());
                 customer.setTaxNo(request.getTaxNo());
-                customer.setRegistrationNo(request.getRegistrationNo());
                 return customer;
             };
     private static final Converter<CustomerUpdateRequest, Customer> CUSTOMER_UPDATE_REQUEST_TO_CUSTOMER_CONVERTER =
@@ -39,7 +38,6 @@ public class ModelMapperConfig {
                 customer.setTaxAdmistrationCity(request.getTaxAdmistrationCity());
                 customer.setTaxAdmistrationName(request.getTaxAdmistrationName());
                 customer.setTaxNo(request.getTaxNo());
-                customer.setRegistrationNo(request.getRegistrationNo());
                 return customer;
             };
     @Bean
