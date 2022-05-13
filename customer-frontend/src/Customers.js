@@ -42,7 +42,7 @@ function Customers() {
                         {
                             customers.map(
                                 (cus,index)=>(
-                                    <tr key={cus.customerNo} >
+                                    <tr key={cus.costumerId} >
                                         <td><h6>{index+1}</h6></td>
                                         <td><h6>{cus.companyName}</h6></td>
                                         <td><h6>{cus.taxNo}</h6></td>
