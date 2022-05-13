@@ -11,15 +11,18 @@ import com.sahabt.customer.repository.CustomerRepository;
 import com.sahabt.customer.service.CustomerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RequestScope
 @RestController
 @RequestMapping("/customers")
+@Validated
 public class CustomerRestController {
     private final CustomerService customerService;
     private final CustomerRepository customerRepository;
@@ -29,7 +32,7 @@ public class CustomerRestController {
     }
 
     @PostMapping("/add")
-    public Optional<CustomerAddResponse> createCustomer(@RequestBody CustomerAddRequest customerAddRequest) {
+    public Optional<CustomerAddResponse> createCustomer(@RequestBody @Valid CustomerAddRequest customerAddRequest) {
         return customerService.createCustomer(customerAddRequest);
     }
     @DeleteMapping("/delete/{id}")
@@ -38,7 +41,7 @@ public class CustomerRestController {
     }
 
     @PutMapping(value = "/update/{id}")
-    public Optional<CustomerResponse> updateCustomer(@PathVariable String id, @RequestBody CustomerUpdateRequest updateRequest){
+    public Optional<CustomerResponse> updateCustomer(@PathVariable String id,@Valid @RequestBody CustomerUpdateRequest updateRequest){
         return customerService.updateCustomer(id,updateRequest);
     }
 
