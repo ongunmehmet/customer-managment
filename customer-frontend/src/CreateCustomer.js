@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import CardHeader from "./components/card-header";
 import Card from "./components/card";
@@ -8,14 +7,16 @@ import Input from "./components/Input";
 import DropDownList from "./components/DropDownList";
 import Button from "./components/Button";
 import {useState} from "react";
-import Employee from "./model/Customer";
-import Dropdown from "bootstrap/js/src/dropdown";
+import Customer from "./model/Customer";
 import DropdownLogic from "./DropdownLogic";
+import CustomerService from "./service/CustomerService";
 
 
 function CreateCustomer() {
     const SECTORS=["SOFtWARE","ARM"]
-    let[customer,setCustomer]=useState(new Employee());
+    const customerService= new CustomerService();
+
+    let[customer,setCustomer]=useState(new Customer());
     let[customers,setCustomers]=useState([]);
 
     function handleInputChange(event){
@@ -25,6 +26,15 @@ function CreateCustomer() {
         setCustomer(newCustomer);
     }
     function customerSave(event) {
+
+        customerService.addCustomer({...customer})
+            .then(res=>{
+               // if(res.status.toLowerCase()==='ok')
+               // {
+                 //   console.log("Kayıt başarılı")
+               // }
+                alert(res.companyName);
+            });
 
 
     }
@@ -83,11 +93,7 @@ function CreateCustomer() {
                            value={customer.taxNo}
                            label="Vergi Numarası">
                     </Input>
-                    <Input id="registrationNo"
-                           handleChange={handleInputChange}
-                           value={customer.registrationNo}
-                           label="Sicil Numarası">
-                    </Input>
+
                     <div className="input-group"></div>
                     <span className="form-label"></span>
                     <Button id="save"
