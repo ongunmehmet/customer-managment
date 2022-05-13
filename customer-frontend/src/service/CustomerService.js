@@ -14,8 +14,9 @@ export default class CustomerService {
             {
                 method: "POST",
                 headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
+                     "Accept": "application/json",
+                     "Content-Type": "application/json"
+
                 }
                 ,
                 body: JSON.stringify(customer)
@@ -51,4 +52,19 @@ export default class CustomerService {
     //         }
     //     ).then(response=>response.json());
      }
+
+
+
+    getAllCustomers = async () => {
+
+            return fetch(
+                API_URL,
+                {
+                    method:"GET",
+                    headers:{
+                        "Accept":"application/json"
+                    }
+                }
+            ).then(response=>response.json());
+    }
 }

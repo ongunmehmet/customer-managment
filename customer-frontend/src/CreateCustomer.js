@@ -33,7 +33,7 @@ function CreateCustomer() {
                // {
                  //   console.log("Kayıt başarılı")
                // }
-                alert(res);
+                alert(res.companyName);
             });
 
 
