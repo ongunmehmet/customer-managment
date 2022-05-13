@@ -19,12 +19,15 @@ function CreateCustomer() {
     let [customer, setCustomer] = useState(new Customer());
     let [customers, setCustomers] = useState([]);
     let [districts, setDistricts] = useState([]);
+    let [cities, setCities] = useState([]);
     let [dataCitiesAndDistricts, setDataCitiesAndDistricts] = useState(City.data);
 
 
 
     useEffect(()=> {
         dataCitiesAndDistricts.map((item, index) => {
+
+
             if (item.il_adi === customer.city) {
                 //  console.log(item["ilceler"])
                 setDistricts(item["ilceler"])
@@ -34,7 +37,7 @@ function CreateCustomer() {
                if(item["il_adi"]==="Adana")
 
                    setDistricts(item["ilceler"])
-               console.log(item["ilceler"])
+               //console.log(item["ilceler"])
 
             }
         })
@@ -116,6 +119,23 @@ function CreateCustomer() {
                         label="İlçe"
                         keyName="ilce_adi"
                     />
+                    <SelectBox
+                        id="taxAdmistrationCity"
+                        options={districts}
+                        handleChange={handleInputChange}
+                        value={customer.city}
+                        label="Vergi Dairesi İli"
+                        keyName="ilce_adi"
+                    />
+                    <SelectBox
+                        id="taxAdmistrationName"
+                        options={districts}
+                        handleChange={handleInputChange}
+                        value={customer.city}
+                        label="Vergi Dairesi Adı"
+                        keyName="ilce_adi"
+                    />
+
                     <Input id="taxNo"
                            handleChange={handleInputChange}
                            value={customer.taxNo}
