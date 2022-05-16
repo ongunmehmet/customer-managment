@@ -5,55 +5,110 @@ import CardBody from "./components/card-body";
 import Container from "./components/container";
 import Input from "./components/Input";
 import Button from "./components/Button";
-import {useEffect, useState} from "react";
+import {Component, useEffect, useState} from "react";
 import Customer from "./model/Customer";
 import CustomerService from "./service/CustomerService";
 import SelectBox from "./components/Selectbox";
 import City from './il-ilce.json'
+import TaxAdmistration from "./taxAdmistrations.json"
 
 
 function CreateCustomer() {
     const SECTORS = ["SOFtWARE", "ARM"]
     const customerService = new CustomerService();
+    const [flag, setFlag] = useState(false) //first init
+
 
     let [customer, setCustomer] = useState(new Customer());
     let [customers, setCustomers] = useState([]);
     let [districts, setDistricts] = useState([]);
     let [cities, setCities] = useState([]);
+    let [choosedCityCode, setChoosedCityCode] = useState([]);
+    let [cityDistricts, setCityDistricts] = useState([]);
+    let [cityTaxAdmistrations, setCityTaxAdmistrations] = useState([]);
     let [dataCitiesAndDistricts, setDataCitiesAndDistricts] = useState(City.data);
+    let [taxAdmistrations, setTaxAdmistrations] = useState(TaxAdmistration.data);
+    let [taxAdmistrationNames, setTaxAdmistrationNames] = useState([]);
+
+
+    useEffect(() => {
+
+        dataCitiesAndDistricts.map((city, index) => {
+
+            let dists=[];
+            let taxs=[];
+            city["ilceler"].map((district) => {
+                let dist={districts:district.ilce_adi}
+                 dists.push(dist)
+
+            })
+            taxAdmistrations.map((tax,index)=>{
+
+                if(tax.cityCode===city.plaka_kodu){
+                   // console.log( tax.cityCode, city.plaka_kodu)
+                    tax["taxAdmistrations"].map((admis,index)=>{
+                        let tax={taxAdmistrationName:admis.taxAdmistrationName}
+                        taxs.push(tax)
+                    })
+
+
+                }
+
+            })
+
+            let newDataCityDistTax={city: city.il_adi,
+                districts:dists,
+                taxAdmistrations:taxs}
+
+            let data=[...cityDistricts]
+            data.push({...newDataCityDistTax});
+            setCityDistricts(data);
+            console.log(data);
+        })
 
 
 
-    useEffect(()=> {
+     //console.log(cityDistricts);
+        setFlag(true);
+    }, [flag === false]);
+
+    useEffect(() => {
         dataCitiesAndDistricts.map((item, index) => {
-
-
             if (item.il_adi === customer.city) {
                 //  console.log(item["ilceler"])
                 setDistricts(item["ilceler"])
             }
-           if ((customer.city==="")){
-
-               if(item["il_adi"]==="Adana")
-
-                   setDistricts(item["ilceler"])
-               //console.log(item["ilceler"])
-
-            }
         })
+    }, [customer.city])
+    taxAdmistrations.map((tax, index) => {
+        if (customer.taxAdmistrationCity != null) {
+            console.log("customer.taxAdmistrationCity" + customer.taxAdmistrationCity)
+
+
+            // if (tax.cityCode === item.plaka_kodu)
+            //
+            //     // setTaxAdmistrationNames([])
+            //
+            //     console.log("tax.cityCode-" + tax.taxAdmistrations)
+            setTaxAdmistrationNames(tax.taxAdmistrations);
+        }
     })
+    useEffect(() => {
+
+
+    }, [customer.taxAdmistrationCity])
+
     function handleInputChange(event) {
 
-        customer.city="";
-        customer.district="";
+        customer.city = "";
+        customer.district = "";
         let newCustomer = {...customer};
         const {name, value} = event.target;
         newCustomer[name] = value;
         setCustomer(newCustomer);
 
 
-        console.log("il"+customer.city);
-        console.log("ilçe:"+customer.district);
+        console.log(customer);
     }
 
     function customerSave(event) {
@@ -72,6 +127,11 @@ function CreateCustomer() {
 
     function customerSaveCancel(event) {
 
+    }
+
+    function onChangeTax(event) {
+
+        console.log("basıldı")
     }
 
     return (
@@ -115,25 +175,25 @@ function CreateCustomer() {
                         id="district"
                         options={districts}
                         handleChange={handleInputChange}
-                        value={customer.city}
+                        value={customer.district}
                         label="İlçe"
                         keyName="ilce_adi"
                     />
                     <SelectBox
                         id="taxAdmistrationCity"
-                        options={districts}
+                        options={dataCitiesAndDistricts}
                         handleChange={handleInputChange}
-                        value={customer.city}
+                        value={customer.taxAdmistrationCity}
                         label="Vergi Dairesi İli"
-                        keyName="ilce_adi"
+                        keyName="il_adi"
                     />
                     <SelectBox
                         id="taxAdmistrationName"
-                        options={districts}
+                        options={taxAdmistrationNames}
                         handleChange={handleInputChange}
-                        value={customer.city}
+                        value={customer.taxAdmistrationName}
                         label="Vergi Dairesi Adı"
-                        keyName="ilce_adi"
+                        keyName="taxAdmistrationName"
                     />
 
                     <Input id="taxNo"
