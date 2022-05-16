@@ -56,19 +56,27 @@ function CreateCustomer() {
 
             })
 
-            let newDataCityDistTax={city: city.il_adi,
-                districts:dists,
-                taxAdmistrations:taxs}
+            let newDataCityTaxes={city: city.il_adi,
+                                  taxAdmistrations:taxs}
 
+            let newDataCityDists={city: city.il_adi,
+                                   districts:dists}
+            //cityDists
             let data=[...cityDistricts]
-            data.push({...newDataCityDistTax});
+            data.push({...newDataCityDists});
             setCityDistricts(data);
-            console.log(data);
+
+            //cityTaxAdmistrations
+            data=[]
+            data=[...cityTaxAdmistrations]
+            data.push(({...newDataCityTaxes}))
+            setCityTaxAdmistrations(data)
+           // console.log(data);
         })
 
 
 
-     //console.log(cityDistricts);
+     console.log(cityTaxAdmistrations);
         setFlag(true);
     }, [flag === false]);
 
