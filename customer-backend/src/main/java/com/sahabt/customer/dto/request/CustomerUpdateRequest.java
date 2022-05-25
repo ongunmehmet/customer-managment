@@ -18,6 +18,8 @@ import javax.validation.constraints.Pattern;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomerUpdateRequest {
+
+    private String customerId;
     @CompanyValidate
     @NotBlank
     private String  companyName;
@@ -27,12 +29,17 @@ public class CustomerUpdateRequest {
     private String  phone;
     @Email
     private String  email;
+    @NotBlank
     private String  sector;
+    @NotBlank
     private String  city;
+    @NotBlank
     private String  district;
+    @NotBlank
     private String  taxAdmistrationCity;
+    @NotBlank
     private String  taxAdmistrationName;
     @ValidTaxNo
-    @NotNull
+    @NotBlank
     private String  taxNo;
 }

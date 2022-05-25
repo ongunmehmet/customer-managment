@@ -15,12 +15,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetInformantationCustomerRequest {
-    @CompanyValidate
-    @NotBlank
     private String  companyName;
-
     private String  sector;
-    @ValidTaxNo
-    @NotNull
     private String  taxNo;
 }

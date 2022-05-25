@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy=TaxNoValidate.class)
 public @interface ValidTaxNo {
-    String message() default "{This is not a valid TaxNo}";
+    String message() default "This is not a valid TaxNo";
 
     Class<?>[] groups() default {};
 

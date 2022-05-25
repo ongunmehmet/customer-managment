@@ -13,7 +13,7 @@ public interface CustomerService {
 
     Optional<CustomerAddResponse> createCustomer(CustomerAddRequest request);
     Optional<CustomerResponse> removeById(String id);
-    Optional<CustomerResponse> updateCustomer(String id, CustomerUpdateRequest updateRequest);
+    Optional<CustomerResponse> updateCustomer(CustomerUpdateRequest updateRequest);
     List<CustomerResponse> findCustomers(GetInformantationCustomerRequest request);
 
     List<CustomerResponse> findAll(int pageNo, int pageSize);

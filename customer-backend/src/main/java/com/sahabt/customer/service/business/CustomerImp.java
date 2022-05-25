@@ -17,9 +17,12 @@ import javax.transaction.Transactional;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 @Service
 public class CustomerImp implements CustomerService {
+    private static final Supplier<CustomerNotFoundException> customerNotFoundExceptionSupplier =
+            () -> new CustomerNotFoundException("Kullanıcı Bulunamadı");
     private final ModelMapper modelMapper;
     private final CustomerRepository customerRepository;
 
@@ -39,19 +42,18 @@ public class CustomerImp implements CustomerService {
 
     @Override
     @Transactional
-    public Optional<CustomerResponse> removeById(String id) {
-        var customer = customerRepository.findById(id).orElseThrow();
-        customerRepository.deleteById(id);
+    public Optional<CustomerResponse> removeById(String customerId) {
+        var customer = customerRepository.findById(customerId).orElseThrow(customerNotFoundExceptionSupplier);
+        customerRepository.deleteById(customerId);
         return Optional.of(modelMapper.map(customer,CustomerResponse.class));
     }
 
     @Override
     @Transactional
-    public Optional<CustomerResponse> updateCustomer(String id, CustomerUpdateRequest updateRequest) {
-        var customer = customerRepository.findById(id).orElseThrow();
+    public Optional<CustomerResponse> updateCustomer(CustomerUpdateRequest updateRequest) {
+        var customer = customerRepository.findById(updateRequest.getCustomerId()).orElseThrow(customerNotFoundExceptionSupplier);
         modelMapper.map(updateRequest,customer);
         return Optional.of(modelMapper.map(customerRepository.saveAndFlush(customer),CustomerResponse.class));
-
     }
 
     @Override
@@ -64,7 +66,7 @@ public class CustomerImp implements CustomerService {
                 .sorted(Comparator.comparing(CustomerResponse::getCompanyName))
                 .toList();
         if (list.isEmpty()){
-            throw new CustomerNotFoundException("Kullanıcı bulunamadı");
+            throw customerNotFoundExceptionSupplier.get();
         }
         return list;
     }
