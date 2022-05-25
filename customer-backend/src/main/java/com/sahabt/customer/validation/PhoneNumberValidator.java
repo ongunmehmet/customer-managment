@@ -15,8 +15,9 @@ public class PhoneNumberValidator implements ConstraintValidator<ValidPhoneNumbe
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        Pattern ptrn = Pattern.compile("(0/91)?[7-9][0-9]{9}");
+        /*Pattern ptrn = Pattern.compile("(0/91)?[7-9][0-9]{11}");
         Matcher match = ptrn.matcher(s);
-        return (match.find() && match.group().equals(s));
+        return (match.find() && match.group().equals(s));*/
+        return s != null && s.matches("[+]?[0-9]{9,13}");
     }
 }

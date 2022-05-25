@@ -6,10 +6,9 @@ import com.sahabt.customer.dto.request.GetInformantationCustomerRequest;
 import com.sahabt.customer.dto.response.CustomerAddResponse;
 import com.sahabt.customer.dto.response.CustomerResponse;
 import com.sahabt.customer.exception.CustomerNotFoundException;
-import com.sahabt.customer.model.Customer;
-import com.sahabt.customer.repository.CustomerRepository;
 import com.sahabt.customer.service.CustomerService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -25,28 +24,29 @@ import java.util.Optional;
 @Validated
 public class CustomerRestController {
     private final CustomerService customerService;
-    private final CustomerRepository customerRepository;
-    public CustomerRestController(CustomerService customerService, CustomerRepository customerRepository) {
+    public CustomerRestController(CustomerService customerService) {
         this.customerService = customerService;
-        this.customerRepository = customerRepository;
     }
 
-    @PostMapping("/add")
+    @PostMapping(value = "/add" ,produces = MediaType.APPLICATION_JSON_VALUE ,consumes = MediaType.APPLICATION_JSON_VALUE)
     public Optional<CustomerAddResponse> createCustomer(@RequestBody @Valid CustomerAddRequest customerAddRequest) {
         return customerService.createCustomer(customerAddRequest);
     }
-    @DeleteMapping("/delete/{id}")
-    public Optional<CustomerResponse> deleteCustomerById(@PathVariable String id){
-        return customerService.removeById(id);
+    @DeleteMapping("/delete/{customerId}")
+    public Optional<CustomerResponse> deleteCustomerById(@PathVariable String customerId){
+        return customerService.removeById(customerId);
     }
 
-    @PutMapping(value = "/update/{id}")
-    public Optional<CustomerResponse> updateCustomer(@PathVariable String id,@Valid @RequestBody CustomerUpdateRequest updateRequest){
-        return customerService.updateCustomer(id,updateRequest);
+    @PutMapping(value = "/update")
+    public Optional<CustomerResponse> updateCustomer(@Valid @RequestBody CustomerUpdateRequest updateRequest){
+        return customerService.updateCustomer(updateRequest);
     }
 
     @PostMapping("/getCustomers")
-    public List<CustomerResponse> findCustomer(GetInformantationCustomerRequest request){
+    public List<CustomerResponse> findCustomer(@RequestBody GetInformantationCustomerRequest request){
+        if (request.getCompanyName().equals("") && request.getSector().equals("") && request.getTaxNo().equals("")){
+            throw new CustomerNotFoundException("Alanlara değer girilmedi.");
+        }
         return customerService.findCustomers(request);
 
     }

@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -37,16 +38,22 @@ public class Customer {
     @Column(nullable = false)
     private String  companyName;
     @ValidPhoneNumber
-    //TODO bu anatasyon çalışırsa validPhoneNumber gerek kalmaz @Pattern(regexp ="[0-9\\s]{11}")
+//    @Pattern(regexp ="[0-9\\s]{11}")
+//TODO bu anatasyon çalışırsa validPhoneNumber gerek kalmaz @Pattern(regexp ="[0-9\\s]{11}")
     @Column(nullable = false,unique = true)
     private String  phone;
     @Email
     @Column(nullable = false,unique = true)
     private String  email;
+    @NotBlank
     private String  sector;
+    @NotBlank
     private String  city;
+    @NotBlank
     private String  district;
+    @NotBlank
     private String  taxAdmistrationCity;
+    @NotBlank
     private String  taxAdmistrationName;
     @ValidTaxNo
     @Column(unique = true)

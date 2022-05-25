@@ -12,7 +12,7 @@ public class CompanyNameValidator implements ConstraintValidator<CompanyValidate
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        if(s.length() < 1 || !s.matches("^a-zA-Z"))
+        if(s.length() < 1 || !s.matches("^[a-zA-Z0-9]*$"))
             return false;
         else
             return true;
