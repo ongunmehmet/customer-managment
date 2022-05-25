@@ -1,5 +1,8 @@
+import uuid from "react-uuid"
+
 export default function SelectBox(props) {
-    let key = props.keyName;
+    let key_ = props.keyName;
+    let currentValue = props.value || "DEFAULT"
     return (
         <div className="input-group">
             <label className="input-group-text"
@@ -10,21 +13,25 @@ export default function SelectBox(props) {
                 id={props.id}
                 type="text"
                 name={props.id}
-                value={props.value}
+                value={currentValue}
                 onChange={props.handleChange}
                 className="form-control form-select"
+                key={uuid()}
+               aria-valuetext={"ssss"}
             >
-                {<option selected>Seçiniz</option> }
-                {
-                    props.options.map((op, index) => (
-                            <>
+                {<option defaultValue={'default'} disabled={true} key={uuid()}>Seçiniz</option>}
 
-                                <option key={op[key]} >{op[key]}</option>
-                            </>
-                        )
+                {
+
+                    props.options.map((op, index) => {
+
+                    return (<option key={uuid()} value={op[key_]}>{op[key_]}</option>)
+                }
                     )
 
+
                 }
+
 
             </select>
         </div>

@@ -11,9 +11,12 @@ import CustomerService from "./service/CustomerService";
 import SelectBox from "./components/Selectbox";
 import City from './il-ilce.json'
 import TaxAdmistration from "./taxAdmistrations.json"
+import {useLocation} from "react-router-dom";
 
 
-function CreateCustomer() {
+function EditCustomer() {
+    const  {state}=useLocation();
+    // const {data}=this.props.location
     const sectors = [{name: "Software"}, {name: "IT"}, {name: "ARM"}, {name: "SCDL"}, {name: "DCLT"},]
     const customerService = new CustomerService();
 
@@ -46,6 +49,10 @@ function CreateCustomer() {
 
     }, [customer.city]);
 
+    useEffect(()=>{
+
+         console.log(state)
+    },[])
 
     useEffect(() => {
         dataCitiesAndDistricts.map(city => {
@@ -76,7 +83,7 @@ function CreateCustomer() {
         console.log(customer);
     }
 
-    function customerSave(event) {
+    function customerUpdate(event) {
 
         customerService.updateCustomer({...customer})
             .then(res => {
@@ -89,7 +96,7 @@ function CreateCustomer() {
 
     }
 
-    function customersaveCancel(event) {
+    function customerUpdateCancel(event) {
 
     }
 
@@ -173,15 +180,15 @@ function CreateCustomer() {
                     <div className="input-group"></div>
                     <span className="form-label"></span>
                     <Button id="save"
-                            label="Kaydet"
+                            label="Güncelle"
                             className="btn-success"
-                            onClick={customerSave}
+                            onClick={customerUpdate}
                             link="">
                     </Button>
                     <Button id="Cancel"
                             label="Vazgeç"
                             className="btn-outline-success"
-                            onClick={customersaveCancel}
+                            onClick={customerUpdateCancel}
                             link="customers">
                     </Button>
                 </CardBody>
@@ -192,5 +199,5 @@ function CreateCustomer() {
     );
 }
 
-export default CreateCustomer;
+export default EditCustomer;
 

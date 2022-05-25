@@ -3,15 +3,15 @@ export default class Customer {
                     = {
 
         costumerId:"aaaa1",
-        companyName: "SAHBT",
-        phone: "0555",
-        email: "sahbt@",
-        sector: "bilişim",
-        city: "",
-        district: "",
-        taxAdmistrationCity: "İSTANBUL",
-        taxAdmistrationName: "CVK",
-        taxNo: "AS789848A",
+        companyName: null,
+        phone: null,
+        email: null,
+        sector: null,
+        city: null,
+        district: null,
+        taxAdmistrationCity: null,
+        taxAdmistrationName: null,
+        taxNo: null,
     }) {
         this.costumerId=customer.costumerId;
         this.companyName = customer.companyName;
