@@ -4,11 +4,11 @@ import {useEffect} from "react";
 
 export default function Button(props) {
 const navigate=useNavigate();
-function postNavigate(){
-  return   navigate('/'+ props.link,{
-        state:{data:1}
-    })
-}
+// function postNavigate(){
+//   return   navigate('/'+ props.link,{
+//         state:{data:1}
+//     })
+// }
 // useEffect(()=>{})
 
     return (
@@ -16,7 +16,7 @@ function postNavigate(){
         <button className={'btn '.concat(props.className) + " badge-danger"}
                 id={props.id}
                 value={props.value}
-                onClick={()=>{link2}}
+                onClick={props.onClick}
 
         >
 
@@ -31,15 +31,12 @@ function link2(props) {
         case "": {
             return (props.label)
         }
-      //  case "update":{return postNavigate()}
-        //case "editOneCustomer":{return postNavigate()}
+
 
         default: {
 
-            // return postNavigate()
-            return <Link className=" text-decoration-none" to={{
-                pathname: "/" + link,
-                data: "11111111111111"
+            return <Link className="text-decoration-none" to={{
+                pathname: "/" + link
             }}> {props.label}</Link>
         }
 

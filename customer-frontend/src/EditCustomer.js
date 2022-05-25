@@ -16,11 +16,11 @@ import {useLocation} from "react-router-dom";
 
 function EditCustomer() {
     const  {state}=useLocation();
-    // const {data}=this.props.location
+     //const {data}=this.props.location
     const sectors = [{name: "Software"}, {name: "IT"}, {name: "ARM"}, {name: "SCDL"}, {name: "DCLT"},]
     const customerService = new CustomerService();
 
-    let [customer, setCustomer] = useState(new Customer());
+    let [customer, setCustomer] = useState(state.customer);
     let [cityDistricts, setCityDistricts] = useState([]);
     let [cityTaxAdmistrations, setCityTaxAdmistrations] = useState([]);
     let [dataCitiesAndDistricts, setDataCitiesAndDistricts] = useState(City.data);
@@ -50,8 +50,9 @@ function EditCustomer() {
     }, [customer.city]);
 
     useEffect(()=>{
+        // console.log("link"+data)
+         console.log("navigator"+state.customer)
 
-         console.log(state)
     },[])
 
     useEffect(() => {
