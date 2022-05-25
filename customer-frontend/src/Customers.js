@@ -8,9 +8,11 @@ import Button from "./components/Button";
 import Container from "./components/container";
 import CustomerService from "./service/CustomerService";
 import FindCustomersRequest from "./dto/request/FindCustomersRequest";
+import {useNavigate} from "react-router-dom";
 
 
 function Customers() {
+    const navigate=useNavigate();
     const [findCustomer, setFindCustomer] = useState(new FindCustomersRequest());
     const [customers, setCustomers] = useState([]);
     const [updateCustomer, setUpdateCustomer] = useState([]);
@@ -18,18 +20,21 @@ function Customers() {
 
     useEffect(() => {
         fetchData();
-    })
+    },[])
 
     async function fetchData() {
         //  console.log("başla:")
         setCustomers(await customerService.getAllCustomers());
         //console.log(customers)
     }
+    function postNavigate(cus){
+        return   navigate('/'+ "editOneCustomer",{
+            state:{customer:cus}
+        })
+    }
+    function editOneCustomer(customer) {
 
-    function editOneCustomer(cus) {
-
-        console.log(cus)
-        customerService.updateCustomer(cus).then(alert);
+        postNavigate(customer)
 
     }
 
@@ -46,6 +51,7 @@ function Customers() {
             setUpdateCustomer(value)
 
     }
+
 
     function customerList(customers) {
 
@@ -83,15 +89,8 @@ function Customers() {
                                             <Button id="edit"
                                                     label="Düzenle"
                                                     onClick={() => editOneCustomer(cus)}
-                                                    className="btn-primary"
+                                                    className="btn-light"
                                                     link="editOneCustomer"
-
-                                            > </Button>
-                                            <Button id="update"
-                                                    label="update"
-
-                                                    className="btn-primary"
-                                                    link="update"
 
                                             > </Button>
 

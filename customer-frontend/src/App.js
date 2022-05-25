@@ -17,10 +17,10 @@ function App(props) {
 
 
                     <Route exact path="/customers" element={<Customers/>}/>
-                    <Route exact path="/update" element={<EditCustomer />}/>
-                    <Route exact path="/editOneCustomer" element={<EditCustomer />}/>
-                        <Route exact path="/" element={<Customers/>}/>
-                        <Route exact path="/createOneCustomer" element={<CreateCustomer/>}/>
+                    <Route  path="/update" element={<EditCustomer />}/>
+                    <Route  path="/editOneCustomer" element={<EditCustomer />}/>
+                        <Route  path="/" element={<Customers/>}/>
+                        <Route  path="/createOneCustomer" element={<CreateCustomer/>}/>
 
 
                 </Routes>
