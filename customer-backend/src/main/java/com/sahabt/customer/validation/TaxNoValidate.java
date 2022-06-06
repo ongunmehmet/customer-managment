@@ -6,15 +6,15 @@ import javax.validation.ConstraintValidatorContext;
 public class TaxNoValidate implements ConstraintValidator<ValidTaxNo,String> {
 
 
-
     @Override
     public void initialize(ValidTaxNo constraintAnnotation) {
-        ConstraintValidator.super.initialize(constraintAnnotation);
+
 
     }
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        return s != null && s.matches("[0-9]{9,11}");
+        return s != null && s.matches("[0-9]{9,10}");
+
     }
 }

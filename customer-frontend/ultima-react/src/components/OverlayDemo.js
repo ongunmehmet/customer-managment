@@ -96,7 +96,7 @@ const OverlayDemo = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="card p-fluid">
+                    {/*<div className="card p-fluid">
                         <h5>Overlay Panel</h5>
                         <div className="grid formgrid">
                             <div className="col-6">
@@ -117,7 +117,7 @@ const OverlayDemo = () => {
                                 </OverlayPanel>
                             </div>
                         </div>
-                    </div>
+                    </div>*/}
                 </div>
 
                 <div className="col-12 lg:col-6">

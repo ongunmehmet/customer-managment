@@ -359,7 +359,7 @@ const Dashboard = (props) => {
 
     return (
         <div className="grid dashboard">
-            <div className="col-12 md:col-6 lg:col-3">
+           {/* <div className="col-12 md:col-6 lg:col-3">
                 <div className="card overview-box flex flex-column pt-2">
                     <div className="flex align-items-center muted-text">
                         <i className="pi pi-shopping-cart"></i>
@@ -423,9 +423,9 @@ const Dashboard = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*/}
 
-            <div className="col-12 md:col-6 lg:col-3">
+           {/* <div className="col-12 md:col-6 lg:col-3">
                 <div className="card overview-box flex flex-column pt-2">
                     <div className="flex align-items-center muted-text">
                         <i className="pi pi-comments"></i>
@@ -445,7 +445,7 @@ const Dashboard = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*/}
 
             <div className="col-12 lg:col-6">
                 <div className="card height-100">

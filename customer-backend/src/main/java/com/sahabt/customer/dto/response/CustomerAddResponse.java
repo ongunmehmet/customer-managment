@@ -17,7 +17,7 @@ public class CustomerAddResponse {
     private String sector;
     private String city;
     private String district;
-    private String taxAdmistrationCity;
-    private String taxAdmistrationName;
+    private String taxAdministrationCity;
+    private String taxAdministrationName;
     private String taxNo;
 }

@@ -548,7 +548,7 @@ const App = () => {
 
                     </div>
 
-                    <AppFooter colorMode={colorMode} />
+                    {/*<AppFooter colorMode={colorMode} />*/}
 
                 </div>
 

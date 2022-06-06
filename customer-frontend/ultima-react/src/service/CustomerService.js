@@ -1,14 +1,15 @@
-import axios from 'axios'
+const BASE_URL =
+    "http://localhost:2001/customer/api/v1";
 
-export class CustomerService {
-    getCustomersMedium() {
-        return axios.get('assets/demo/data/customers-medium.json')
-            .then(res => res.data.data);
-    }
+export default class CustomerService{
 
-    getCustomersLarge() {
-        return axios.get('assets/demo/data/customers-large.json')
-                .then(res => res.data.data);
+
+    getAllCustomers = async () => {
+        return fetch(BASE_URL+"/customers",{
+            headers: {
+                "Accept": "application/json"
+            }
+        }).then( res => res.json());
     }
-    
 }
+
