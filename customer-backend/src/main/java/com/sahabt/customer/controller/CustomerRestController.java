@@ -55,6 +55,10 @@ public class CustomerRestController {
     public List<CustomerResponse> findAllCustomers(@RequestParam(defaultValue = "0", required = false) int pageNo, @RequestParam(defaultValue = "20",required = false) int pageSize){
         return customerService.findAll(pageNo, pageSize);
     }
+    @GetMapping("/getCustomers2")
+    public String findAllCustomers2(){
+        return "heyyyy";
+    }
 
     @ExceptionHandler(value = CustomerNotFoundException.class)
     public ResponseEntity<Object> exception (CustomerNotFoundException exception){
