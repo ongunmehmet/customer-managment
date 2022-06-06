@@ -22,6 +22,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/customers")
 @Validated
+@CrossOrigin
 public class CustomerRestController {
     private final CustomerService customerService;
     public CustomerRestController(CustomerService customerService) {
@@ -54,6 +55,7 @@ public class CustomerRestController {
     public List<CustomerResponse> findAllCustomers(@RequestParam(defaultValue = "0", required = false) int pageNo, @RequestParam(defaultValue = "20",required = false) int pageSize){
         return customerService.findAll(pageNo, pageSize);
     }
+
 
     @ExceptionHandler(value = CustomerNotFoundException.class)
     public ResponseEntity<Object> exception (CustomerNotFoundException exception){

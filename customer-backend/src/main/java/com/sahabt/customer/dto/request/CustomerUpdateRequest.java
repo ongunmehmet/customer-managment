@@ -36,9 +36,9 @@ public class CustomerUpdateRequest {
     @NotBlank
     private String  district;
     @NotBlank
-    private String  taxAdmistrationCity;
+    private String  taxAdministrationCity;
     @NotBlank
-    private String  taxAdmistrationName;
+    private String  taxAdministrationName;
     @ValidTaxNo
     @NotBlank
     private String  taxNo;

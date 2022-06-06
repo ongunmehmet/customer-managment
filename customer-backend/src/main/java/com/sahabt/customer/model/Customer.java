@@ -52,9 +52,9 @@ public class Customer {
     @NotBlank
     private String  district;
     @NotBlank
-    private String  taxAdmistrationCity;
+    private String  taxAdministrationCity;
     @NotBlank
-    private String  taxAdmistrationName;
+    private String  taxAdministrationName;
     @ValidTaxNo
     @Column(unique = true)
     @NotNull
