@@ -51,8 +51,8 @@ public class CustomerServiceTest {
             String sector,
             String city,
             String district,
-            String taxAdmistrationCity,
-            String taxAdmistrationName,
+            String taxAdministrationCity,
+            String taxAdministrationName,
             String taxNo
     ) throws Throwable {
         var request = new CustomerAddRequest();
@@ -62,8 +62,8 @@ public class CustomerServiceTest {
         request.setSector(sector);
         request.setCity(city);
         request.setDistrict(district);
-        request.setTaxAdmistrationCity(taxAdmistrationCity);
-        request.setTaxAdmistrationName(taxAdmistrationName);
+        request.setTaxAdministrationCity(taxAdministrationCity);
+        request.setTaxAdministrationName(taxAdministrationCity);
         request.setTaxNo(taxNo);
         var response = modelMapper.map(request,
                 CustomerAddResponse.class);
@@ -82,8 +82,8 @@ public class CustomerServiceTest {
                 .andExpect(jsonPath("$.phone", is(phone)))
                 .andExpect(jsonPath("$.city", is(city)))
                 .andExpect(jsonPath("$.district", is(district)))
-                .andExpect(jsonPath("$.taxAdmistrationCity", is(taxAdmistrationCity)))
-                .andExpect(jsonPath("$.taxAdmistrationCity", is(taxAdmistrationCity)))
+                .andExpect(jsonPath("$.taxAdministrationCity", is(taxAdministrationCity)))
+                .andExpect(jsonPath("$.taxAdministrationCity", is(taxAdministrationCity)))
                 .andExpect(jsonPath("$.taxNo", is(taxNo)));
 
     }
@@ -98,8 +98,8 @@ public class CustomerServiceTest {
             String sector,
             String city,
             String district,
-            String taxAdmistrationCity,
-            String taxAdmistrationName,
+            String taxAdministrationCity,
+            String taxAdministrationName,
             String taxNo
     )throws Throwable{
         var response = new CustomerResponse();
@@ -110,8 +110,8 @@ public class CustomerServiceTest {
         response.setSector(sector);
         response.setCity(city);
         response.setDistrict(district);
-        response.setTaxAdmistrationCity(taxAdmistrationCity);
-        response.setTaxAdmistrationName(taxAdmistrationName);
+        response.setTaxAdministrationCity(taxAdministrationCity);
+        response.setTaxAdministrationName(taxAdministrationName);
         response.setTaxNo(taxNo);
         Mockito.when(customerService.removeById(customerId))
                 .thenReturn(Optional.of(response));
@@ -125,8 +125,8 @@ public class CustomerServiceTest {
                 .andExpect(jsonPath("$.phone", is(phone)))
                 .andExpect(jsonPath("$.city", is(city)))
                 .andExpect(jsonPath("$.district", is(district)))
-                .andExpect(jsonPath("$.taxAdmistrationCity", is(taxAdmistrationCity)))
-                .andExpect(jsonPath("$.taxAdmistrationCity", is(taxAdmistrationCity)))
+                .andExpect(jsonPath("$.taxAdministrationCity", is(taxAdministrationCity)))
+                .andExpect(jsonPath("$.taxAdministrationCity", is(taxAdministrationCity)))
                 .andExpect(jsonPath("$.taxNo", is(taxNo)));
     }
 

@@ -370,10 +370,10 @@ const DashboardAnalytics = (props) => {
         let status = diff === 0 ? 0 : (diff > 0 ? 1 : -1);
         totalValue = +((totalValue + diff).toFixed(2));
 
-        storeA.current.chart.update();
-        storeB.current.chart.update();
-        storeC.current.chart.update();
-        storeD.current.chart.update();
+        /*storeA.current.chart.update();*/
+        /*storeB.current.chart.update();*/
+        /*storeC.current.chart.update();
+        storeD.current.chart.update();*/
 
         return { diff, totalValue, status };
     }
@@ -394,22 +394,22 @@ const DashboardAnalytics = (props) => {
             let { diff: _storeADiff, totalValue: _storeATotalValue } = calculateStore(storeAData, storeATotalValue);
             setStoreADiff(_storeADiff);
             setStoreATotalValue(_storeATotalValue);
-            storeA.current.chart.update();
+            /*storeA.current.chart.update();*/
 
             let { diff: _storeBDiff, totalValue: _storeBTotalValue } = calculateStore(storeBData, storeBTotalValue);
             setStoreBDiff(_storeBDiff);
             setStoreBTotalValue(_storeBTotalValue);
-            storeB.current.chart.update();
+            /*storeB.current.chart.update();*/
 
             let { diff: _storeCDiff, totalValue: _storeCTotalValue } = calculateStore(storeCData, storeCTotalValue);
             setStoreCDiff(_storeCDiff)
             setStoreCTotalValue(_storeCTotalValue);
-            storeC.current.chart.update();
+            /*storeC.current.chart.update();*/
 
             let { diff: _storeDDiff, totalValue: _storeDTotalValue } = calculateStore(storeDData, storeDTotalValue);
             setStoreDDiff(_storeDDiff);
             setStoreDTotalValue(_storeDTotalValue);
-            storeD.current.chart.update();
+            /*storeD.current.chart.update();*/
         }, 2000)
 
         return () => {
@@ -519,7 +519,7 @@ const DashboardAnalytics = (props) => {
                 </div>
             </div>
 
-            <div className="col-12 md:col-4">
+            {/*<div className="col-12 md:col-4">
                 <div className="card widget-insights height-100">
                     <div className="card-header mb-2">
                         <h5>Insights</h5>
@@ -554,9 +554,9 @@ const DashboardAnalytics = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*/}
 
-            <div className="col-12 md:col-4">
+           {/* <div className="col-12 md:col-4">
                 <div className="card widget-social">
                     <div className="flex justify-content-between align-items-center p-3">
                         <div className="social-icon">
@@ -581,9 +581,9 @@ const DashboardAnalytics = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*/}
 
-            <div className="col-12 md:col-4">
+           {/* <div className="col-12 md:col-4">
                 <div className="card widget-social">
                     <div className="flex justify-content-between align-items-center p-3">
                         <div className="social-icon">
@@ -635,9 +635,9 @@ const DashboardAnalytics = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*/}
 
-            <div className="col-12 md:col-12">
+           {/* <div className="col-12 md:col-12">
                 <div className="card grid grid-nogutter widget-sales block sm:flex">
                     <div className="lg:col-3 md:col-6 sm:col-12 p-0">
                         <div className="sales-info flex flex-column p-4">
@@ -700,9 +700,9 @@ const DashboardAnalytics = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*/}
 
-            <div className="col-12 md:col-6">
+           {/* <div className="col-12 md:col-6">
                 <div className="card height-100 widget-topsearchs">
                     <div className="card-header">
                         <h5>Top Searchs</h5>
@@ -736,7 +736,7 @@ const DashboardAnalytics = (props) => {
                         <span className="value type-pink">11% CONV RATE</span>
                     </div>
                 </div>
-            </div>
+            </div>*/}
 
             <div className="col-12 md:col-6">
                 <div className="card">

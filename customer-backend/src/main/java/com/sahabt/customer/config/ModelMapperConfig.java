@@ -22,8 +22,8 @@ public class ModelMapperConfig {
                 customer.setSector(request.getSector());
                 customer.setCity(request.getCity());
                 customer.setDistrict(request.getDistrict());
-                customer.setTaxAdmistrationCity(request.getTaxAdmistrationCity());
-                customer.setTaxAdmistrationName(request.getTaxAdmistrationName());
+                customer.setTaxAdministrationCity(request.getTaxAdministrationCity());
+                customer.setTaxAdministrationName(request.getTaxAdministrationName());
                 customer.setTaxNo(request.getTaxNo());
                 return customer;
             };
@@ -37,8 +37,8 @@ public class ModelMapperConfig {
                 customer.setSector(request.getSector());
                 customer.setCity(request.getCity());
                 customer.setDistrict(request.getDistrict());
-                customer.setTaxAdmistrationCity(request.getTaxAdmistrationCity());
-                customer.setTaxAdmistrationName(request.getTaxAdmistrationName());
+                customer.setTaxAdministrationCity(request.getTaxAdministrationCity());
+                customer.setTaxAdministrationName(request.getTaxAdministrationName());
                 customer.setTaxNo(request.getTaxNo());
                 return customer;
             };
@@ -52,8 +52,8 @@ public class ModelMapperConfig {
                 response.setSector(request.getSector());
                 response.setCity(request.getCity());
                 response.setDistrict(request.getDistrict());
-                response.setTaxAdmistrationCity(request.getTaxAdmistrationCity());
-                response.setTaxAdmistrationName(request.getTaxAdmistrationName());
+                response.setTaxAdministrationCity(request.getTaxAdministrationCity());
+                response.setTaxAdministrationName(request.getTaxAdministrationName());
                 response.setTaxNo(request.getTaxNo());
                 return response;
             };

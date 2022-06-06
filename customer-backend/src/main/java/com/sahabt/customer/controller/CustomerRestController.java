@@ -22,6 +22,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/customers")
 @Validated
+@CrossOrigin
 public class CustomerRestController {
     private final CustomerService customerService;
     public CustomerRestController(CustomerService customerService) {
