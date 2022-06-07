@@ -11,4 +11,6 @@ import java.util.Optional;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer,String> {
     List<Customer> findCustomersByCompanyNameOrTaxNoOrSector(String companyName, String taxNo, String sector);
+
+    Customer findCustomersByTaxNo(String taxNo);
 }

@@ -22,7 +22,6 @@ import javax.validation.constraints.Pattern;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Entity(name = "customers")
 public class Customer {
 
@@ -38,8 +37,6 @@ public class Customer {
     @Column(nullable = false)
     private String  companyName;
     @ValidPhoneNumber
-//    @Pattern(regexp ="[0-9\\s]{11}")
-//TODO bu anatasyon çalışırsa validPhoneNumber gerek kalmaz @Pattern(regexp ="[0-9\\s]{11}")
     @Column(nullable = false,unique = true)
     private String  phone;
     @Email

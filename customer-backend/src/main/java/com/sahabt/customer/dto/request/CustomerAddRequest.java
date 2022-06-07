@@ -21,7 +21,6 @@ public class CustomerAddRequest {
     @CompanyValidate
     private String  companyName;
     @ValidPhoneNumber
-//    @Pattern(regexp ="[0-9\\s]{11}")
     private String  phone;
     @Email
     private String  email;

@@ -5,6 +5,7 @@ import com.sahabt.customer.dto.request.CustomerUpdateRequest;
 import com.sahabt.customer.dto.request.GetInformantationCustomerRequest;
 import com.sahabt.customer.dto.response.CustomerAddResponse;
 import com.sahabt.customer.dto.response.CustomerResponse;
+import com.sahabt.customer.exception.CustomerAlreadyExistException;
 import com.sahabt.customer.exception.CustomerNotFoundException;
 import com.sahabt.customer.service.CustomerService;
 import org.springframework.http.HttpStatus;
@@ -60,6 +61,10 @@ public class CustomerRestController {
     @ExceptionHandler(value = CustomerNotFoundException.class)
     public ResponseEntity<Object> exception (CustomerNotFoundException exception){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+    @ExceptionHandler(value = CustomerAlreadyExistException.class)
+    public ResponseEntity<Object> exception (CustomerAlreadyExistException exception){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
 
 }

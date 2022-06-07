@@ -5,6 +5,7 @@ import com.sahabt.customer.dto.request.CustomerUpdateRequest;
 import com.sahabt.customer.dto.request.GetInformantationCustomerRequest;
 import com.sahabt.customer.dto.response.CustomerAddResponse;
 import com.sahabt.customer.dto.response.CustomerResponse;
+import com.sahabt.customer.exception.CustomerAlreadyExistException;
 import com.sahabt.customer.exception.CustomerNotFoundException;
 import com.sahabt.customer.model.Customer;
 import com.sahabt.customer.repository.CustomerRepository;
@@ -34,8 +35,11 @@ public class CustomerImp implements CustomerService {
     @Override
     @Transactional
     public Optional<CustomerAddResponse> createCustomer(CustomerAddRequest request) {
+        var existCustomer = customerRepository.findCustomersByTaxNo(request.getTaxNo());
         var customer = modelMapper.map(request, Customer.class);
-
+        if (existCustomer!=null && existCustomer.getCompanyName().equals(request.getCompanyName())){
+            throw new CustomerAlreadyExistException("Customer Already Exists");
+        }
         return Optional.of(modelMapper.map(customerRepository.save(customer), CustomerAddResponse.class));
 
     }
